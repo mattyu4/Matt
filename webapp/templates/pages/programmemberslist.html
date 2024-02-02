@@ -1,0 +1,54 @@
+{% extends 'pages/index.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <title>Program and Member List</title>
+    <center>
+        <h1>Members Per Program!</h1>
+        </center>
+    </head>
+    <body>
+        <a href="{% url 'create_member' %}" class="btn btn-primary" style="float: right">Add new</a>
+        
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>MEMBERSHIP NO.</th>
+                    <th>Program</th>
+                    <th class="float-right">ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                <tr>
+                    <td>{{ member.membership_number }}</td>
+                    <td>{{ member.member_full_name }}</td>
+                    <td>{{ member.membership_number }}</td>
+                    <td>
+                        {% for program in member.program.all %}
+                        <h6>{{program.program}}</h6>
+                        {% endfor %}
+                       
+
+                    </td>
+                    <td class="float-right">
+                        <a href="{% url 'edit_member' member.membership_number %}" class="btn btn-primary badge-pill"> EDIT </a>
+                        <a href="{% url 'delete_member' member.membership_number %}" class="btn btn-danger badge-pill"> DELETE </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+        <script>
+            new DataTable('#example');
+        </script>  
+    </body>
+</html>
+{% endblock %}

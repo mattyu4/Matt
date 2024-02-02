@@ -1,0 +1,9 @@
+{% extends 'pages/index.html' %}
+{% block content %}
+  <h2>Create Member</h2>
+  <form method="post" action="{% url 'create_member' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Member</button>
+  </form>
+{% endblock %}

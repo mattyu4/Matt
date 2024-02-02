@@ -1,0 +1,56 @@
+{% extends 'pages/index.html' %}
+{% load static %}
+{% block content %}
+{#homepage#}
+<html>
+    <head>
+        <title>Program</title>
+    </head>
+    <center>
+        <h1>List of Programs</h1>
+        </center>
+    <body>
+
+        <a href="{% url 'program_create' %}">
+            <input class="btn btn-primary" type="submit" style= "float: right"value="Add new">
+
+        </a>
+
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Program</th>
+            <th>Description</th>
+            <th class="float-right">ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for abc in programs %}
+        <tr>
+            <td>{{abc.id}}</td>
+            <td>{{abc.program}}</td>
+            <td>{{abc.description}}</td>
+            <td class="float-right">
+                <a href="{% url 'program_edit' abc.id %}">
+                <button class="btn btn-primary badge-pill"> EDIT </button>
+            </a>
+            <a href="{% url 'program_delete' abc.id %}">
+                <button class="btn btn-danger badge-pill"> DELETE </button>
+            </a>
+            </td>
+        </tr>
+        {% endfor %}
+        
+</table>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        new DataTable('#example');
+    </script>  
+    {% endblock %}
+
+<script src="{% static '/js/script.js' %}"></script>
+</html>

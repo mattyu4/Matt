@@ -1,0 +1,12 @@
+{% extends 'pages/index.html' %}
+
+{% block content %}
+  <h2>Confirm Deletion</h2>
+  <p>Are you sure you want to delete {{ member.member_full_name }}?</p>
+  <form method="post" action="{% url 'delete_member' member.membership_number %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+  </form>
+  <br>
+  <a href="{% url 'programmemberslist_page' %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

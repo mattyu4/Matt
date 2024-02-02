@@ -1,0 +1,30 @@
+{% extends 'pages/index.html' %}
+{% load static %}
+{% block content %}
+{#homepage#}
+<html>
+    <head>
+        <title>Program</title>
+    </head>
+    
+    <body>
+        <center>
+            <h1>Programs create</h1>
+            </center>
+
+        <form action="{% url 'program_create' %}" method="POST" >
+            {% csrf_token %}
+            {{programForm}}
+            <button type="submit" class="btn btn-primary">SUBMIT</button>
+
+        </form>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        new DataTable('#example');
+    </script>  
+    {% endblock %}
+
+<script src="{% static '/js/script.js' %}"></script>
+</html>

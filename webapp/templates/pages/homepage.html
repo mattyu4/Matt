@@ -1,0 +1,38 @@
+{% extends 'pages/index.html' %}
+{% block content %}
+<center>
+<html>
+    <title>Admin dashboard</title>
+    <br>
+    <br>
+    <br>
+<h1>Welcome!</h1>
+</center>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 py-3">
+      <div class="card rounded-0 shadow">
+          <div class="card-body">
+              <div class="container-fluid">
+                  <h6>Total Available Program For Subscription: {{total_programs}}</h6>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 py-3">
+    <div class="card rounded-0 shadow">
+        <div class="card-body">
+            <div class="container-fluid">
+                <h6>Total Members: {{total_members}}
+                </h6>
+            </div>
+        </div>
+    </div>
+</div>
+      {% load static %}
+{% endblock %}
+</html>

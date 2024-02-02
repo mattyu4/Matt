@@ -1,0 +1,44 @@
+{% extends 'pages/index.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <title>Members</title>
+    </head>
+    <center>
+        <h1>List of Members!</h1>
+        </center>
+    <body>
+<input class="btn btn-primary" type="submit" style= "float: right"value="Add new">
+
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th class="float-right">ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for def in members %}
+        <tr>
+            <td>{{def.membership_number}}</td>
+            <td>{{def.member_full_name}}</td>
+            <td>{{def.email}}</td>
+            <td class="float-right">
+                <button class="btn btn-primary badge-pill"> EDIT </button>
+            </td>
+        </tr>
+        {% endfor %}
+        
+</table>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        new DataTable('#example');
+    </script>  
+</html>
+{% endblock %}
